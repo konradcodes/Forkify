@@ -52,7 +52,7 @@ export default class Recipe {
         //Ex. 4 cups, arrCount is [4];
         const arrCount = arrIng.slice(0, unitIndex);
         let count;
-        if (arrCount === 1) {
+        if (arrCount.length === 1) {
           count = eval(arrIng[0].replace("-", "+"));
         } else {
           count = eval(arrIng.slice(0, unitIndex).join("+"));
@@ -62,7 +62,7 @@ export default class Recipe {
           unit: arrIng[unitIndex],
           ingredient: arrIng.slice(unitIndex + 1).join(" ")
         };
-      } else if ((parseInt(arrIng[0]), 10)) {
+      } else if (parseInt(arrIng[0], 10)) {
         //There is NO Unit but 1st element is a number
         objIng = {
           count: parseInt(arrIng[0], 10),
