@@ -16,7 +16,8 @@ import { elements, renderLoader, clearLoader } from "./views/base";
  * - Liked recipes
  */
 const state = {};
-
+//leaking all the information from state for testing purposes
+// window.state = state;
 //?Search Controller
 const controlSearch = async () => {
   // 1) Get query from the view
@@ -100,7 +101,6 @@ const controlRecipe = async () => {
 const controlList = () => {
   //Create a new list IF there is none yet
   if (!state.list) state.list = new List();
-
   //Add each ingredient to the list and UI
   state.recipe.ingredients.forEach(el => {
     const item = state.list.addItem(el.count, el.unit, el.ingredient);
@@ -152,7 +152,7 @@ const controlLike = () => {
   likesView.toggleLikeMenu(state.likes.getNumLikes());
 };
 
-//Resotre liked recipes on page load
+//Restore liked recipes on page load
 window.addEventListener("load", () => {
   state.likes = new Likes();
   //Restore likes
